@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/node:20.5.1
+    steps:
+      - run:
+          name: Print Working Directory
+          command: pwd
+
+workflows:
+  build-deploy:
+    jobs:
+      - build

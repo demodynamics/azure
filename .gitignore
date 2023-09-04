@@ -1,4 +1,4 @@
 pgdata/
-*.yml
-*.yaml
-*.tf
+docker-compose.yml
+front-app-ingress.yaml
+main.tf
