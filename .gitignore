@@ -1,0 +1,5 @@
+pgdata/
+src/
+*.yml
+*.yaml
+*.tf
