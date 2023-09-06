@@ -13,8 +13,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y rsync
       - run:
-          name: Debug CIRCLE_WORKING_DIRECTORY
-          command: echo "CIRCLE_WORKING_DIRECTORY is $CIRCLE_WORKING_DIRECTORY"
+          name: Debug absolute home directory path
+          command: |
+            echo "Home directory is: $HOME"
+
       - run:
           name: Copy all files and folders to /home/circleci/project/alco24
           command: rsync -avz --dry-run $CIRCLE_WORKING_DIRECTORY/alco/ /home/circleci/project/alco24/
