@@ -24,17 +24,6 @@ function AdminCatalog() {
     };
 
     useEffect(() => {
-
-        async function getCategory() {
-            try {
-                const category = await axios.get(`/api/list/get-category/${name}`)
-                setCategory(category.data)
-            } catch (e) {
-                toast.warning('что-то пошло не так попробуйте через 5 минут')
-
-            }
-        }
-
         getCategory()
         if (!localStorage.getItem('token')) {
             navigate('/')
@@ -50,7 +39,15 @@ function AdminCatalog() {
         setItemOldPrice(e)
     }
 
+    async function getCategory() {
+        try {
+            const category = await axios.get(`/api/list/get-category/${name}`)
+            setCategory(category.data)
+        } catch (e) {
+            toast.warning('что-то пошло не так попробуйте через 5 минут')
 
+        }
+    }
 
     async function editItem(id) {
         try {
