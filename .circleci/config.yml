@@ -13,6 +13,11 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y rsync
       - run:
+          name: Debug Home Directory
+          command: |
+            echo "Contents of $HOME:"
+            ls -la $HOME
+      - run:
           name: Copy all files and folders to /home/circleci/project/alco24
           command: rsync -avz "$HOME/project/alco/" /home/circleci/project/alco24
       - run:
