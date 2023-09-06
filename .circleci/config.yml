@@ -19,7 +19,7 @@ jobs:
             ls -la $HOME
       - run:
           name: Copy all files and folders to /home/circleci/project/alco24
-          command: rsync -avz "$HOME/project/ /home/circleci/project/alco24
+          command: rsync -avz $HOME/project/ /home/circleci/project/alco24
       - run:
           name: Install Dependencies
           command: |
