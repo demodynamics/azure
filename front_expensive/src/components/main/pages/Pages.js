@@ -23,18 +23,21 @@ function Pages() {
     };
     const handleShow = () => setShow(true);
 
-    async function getCategory() {
-        try {
-            const category = await axios.get(`http://localhost:5003/api/list/get-category/${name}`)
-            setAlko(category.data)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+
 
     useEffect(() => {
+
+        async function getCategory() {
+            try {
+                const category = await axios.get(`http://localhost:5003/api/list/get-category/${name}`)
+                setAlko(category.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
         getCategory()
-    }, [getCategory])
+    }, [name])
 
     function addToBasket(e, item) {
         e.preventDefault()
@@ -122,7 +125,7 @@ function Pages() {
                             alko ? alko.map((item, index) => {
                                 return (
                                     <Card className='pages_cards' key={index}>
-                                        {item.oldPrice ? <Card.Text className='akcia-text'><img className='akcia_img' src='/image/akcia.png' /></Card.Text> : null}
+                                        {item.oldPrice ? <Card.Text className='akcia-text'><img className='akcia_img' src='/image/akcia.png' alt="" /></Card.Text> : null}
                                         <Card.Img variant="top" className='item_img' src={`http://localhost:5003/api/imgs/${name}/${item.img}${/\.\w+$/.test(item.img) ? '' : '.jpg'}`} alt="" />
                                         <Card.Body className='card.body akcia-card-body'>
                                             <Card.Title>{item.name}</Card.Title>
