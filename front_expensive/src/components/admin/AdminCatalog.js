@@ -23,11 +23,21 @@ function AdminCatalog() {
         setActiveId(id)
     };
 
+
+    const getCategory = useCallback(async () => {
+        try {
+            const categoryData = await axios.get(`/api/list/get-category/${name}`)
+            setCategory(categoryData.data)
+        } catch (e) {
+            toast.warning('что-то пошло не так, попробуйте через 5 минут')
+        }
+    }, [name])
+
     useEffect(() => {
         if (!localStorage.getItem('token')) {
-            navigate('/');
+            navigate('/')
         } else {
-            getCategory();
+            getCategory()
         }
 
     }, [navigate, getCategory])
@@ -40,15 +50,7 @@ function AdminCatalog() {
         setItemOldPrice(e)
     }
 
-    async function getCategory() {
-        try {
-            const category = await axios.get(`/api/list/get-category/${name}`)
-            setCategory(category.data)
-        } catch (e) {
-            toast.warning('что-то пошло не так попробуйте через 5 минут')
 
-        }
-    }
 
     async function editItem(id) {
         try {
