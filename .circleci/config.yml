@@ -41,12 +41,7 @@ jobs:
       - run:
           name: Check Docker Daemon Status
           command: |
-            sudo service docker status > docker_status.log   # Redirect the status output to a log file
-
-      - run:
-          name: View Docker Daemon Status Log
-          command: |
-            cat docker_status.log   # View the contents of the log file
+            sudo systemctl status docker
 
       - attach_workspace:
           at: /home/circleci/project/alco24/front_expensive
