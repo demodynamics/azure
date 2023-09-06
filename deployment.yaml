@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: demodynamics/alco_front
+          image: demodynamics/front_expensive:1.0.0
           ports:
             - containerPort: 3000
           resources:

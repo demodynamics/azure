@@ -1,4 +1,3 @@
 pgdata/
 docker-compose.yml
-front-app-ingress.yaml
 main.tf
