@@ -44,7 +44,7 @@ jobs:
           name: Push Frontend to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t demodynamics/front_expensive:3.0.0 /workspace/alco24/front_expensive
+            docker build -t demodynamics/front_expensive:3.0.0 /tmp/workspace/alco24/front_expensive
             docker push demodynamics/front_expensive:1.0.0
 
   push_backend:
@@ -57,7 +57,7 @@ jobs:
           name: Push Backend to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t demodynamics/back_expensive:3.0.0 /workspace/alco24/back_expensive
+            docker build -t demodynamics/back_expensive:3.0.0 /tmp/workspace/alco24/back_expensive
             docker push demodynamics/back_expensive:1.0.0
 
   deploy_frontend:
@@ -69,10 +69,10 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Copy kubeconfig for Frontend Deployment
-          command: cp /workspace/alco24/kubeconfig.yaml $HOME/.kube/config
+          command: cp /tmp/workspace/alco24/kubeconfig.yaml $HOME/.kube/config
       - run:
           name: Use kubeconfig for Frontend Deployment
-          command: kubectl apply -f /workspace/alco24/deployment.yaml # Укажите путь к файлу деплоя фронтенда
+          command: kubectl apply -f /tmp/workspace/alco24/deployment.yaml # Укажите путь к файлу деплоя фронтенда
 
   deploy_backend:
     docker:
@@ -83,10 +83,10 @@ jobs:
           at: /tmp/workspace
       - run:
           name: Copy kubeconfig for Backend Deployment
-          command: cp /workspace/alco24/kubeconfig.yaml $HOME/.kube/config
+          command: cp /tmp/workspace/alco24/kubeconfig.yaml $HOME/.kube/config
       - run:
           name: Use kubeconfig for Backend Deployment
-          command: kubectl apply -f /workspace/alco24/deployment.yaml # Укажите путь к файлу деплоя бэкенда
+          command: kubectl apply -f /tmp/workspace/alco24/deployment.yaml # Укажите путь к файлу деплоя бэкенда
 
 workflows:
   build-deploy:
