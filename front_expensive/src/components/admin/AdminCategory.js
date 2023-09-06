@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom"
 import "./admin.css";
 function AdminCategory() {
     const navigate = useNavigate()
-    
+
     useEffect(() => {
         if (!localStorage.getItem('token')) {
             navigate('/')
         }
 
-    }, [])
+    }, [navigate])
 
-   const catalog = [
+    const catalog = [
         {
             ru: "Водка",
             en: "vodka"
@@ -100,11 +100,11 @@ function AdminCategory() {
 
     return (
         <div className='admin_page'>
-            <Button variant="primary" onClick={logOut}>ВЫХОД</Button><br/>
+            <Button variant="primary" onClick={logOut}>ВЫХОД</Button><br />
             {
                 catalog.map((item, i) => {
                     return (
-                        
+
                         <Button key={i} className='admin_page__item__name' onClick={() => navigate(`/nimda/category/${item.en}`)}>{item.ru}</Button>
                     )
                 })

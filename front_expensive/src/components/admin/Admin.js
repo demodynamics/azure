@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import './admin.css'
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Admin() {
 
@@ -11,19 +11,19 @@ function Admin() {
     const navigate = useNavigate()
 
 
-    useEffect(()=>{
-        if(localStorage.getItem('token')){
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
             navigate('/nimda/category')
         }
-    },[])
+    }, [navigate])
 
-    
+
 
     async function signInAdmin(e) {
         e.preventDefault()
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/;
         const isValidPassword = passwordRegex.test(password);
-        if(!isValidPassword) {
+        if (!isValidPassword) {
             toast.warning("Пароль должен содержать латинские символы A-Z (в верхнем и нижнем регистре), цифры 0-9 и быть длиной не менее 8 символов.")
             return
         }
@@ -41,11 +41,11 @@ function Admin() {
                 navigate('/nimda/category')
             }
         } catch (e) {
-            if(e.response.data.message == "dont") {
+            if (e.response.data.message === "dont") {
                 toast.warning("Таково админа нету")
             }
 
-            if(e.response.data.message == "invalidpassword") {
+            if (e.response.data.message === "invalidpassword") {
                 toast.warning("Неверный пароль")
             }
         }

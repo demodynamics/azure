@@ -2,7 +2,6 @@ import './basket.css';
 import { useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
-import * as Icon from 'react-bootstrap-icons'
 import { toast } from 'react-toastify';
 
 function Basket() {
@@ -17,7 +16,7 @@ function Basket() {
     const [otherA, setOtherA] = useState();
     const [selectedCity, setSelectedCity] = useState('Москва');
     const [selectedValue, setSelectedValue] = useState(0);
-	const [spanError, setSpanError] = useState('');
+    const [spanError, setSpanError] = useState('');
 
 
     const handleRadioChange = (event) => {
@@ -129,7 +128,7 @@ function Basket() {
                 toast.warning('проблемы со связи, попробуйте снова')
             }
         } else {
-			
+
             toast.warning("заполните форму полностью и без ошибок")
             return
         }
@@ -184,9 +183,9 @@ function Basket() {
 
                 <div className='form_delivery'>
                     <Form className='form_delivery' >
-						<Form.Label>Имя </Form.Label>
+                        <Form.Label>Имя </Form.Label>
                         <InputGroup controlId="formBasicName">
-                          
+
                             <Form.Control
                                 type="text"
                                 name='Imya'
@@ -195,9 +194,9 @@ function Basket() {
                                 required
                             />
                         </InputGroup>
-						<Form.Label>Тел.</Form.Label>
-					   <InputGroup >
-							<InputGroup.Text>+7</InputGroup.Text>
+                        <Form.Label>Тел.</Form.Label>
+                        <InputGroup >
+                            <InputGroup.Text>+7</InputGroup.Text>
                             <Form.Control
                                 type="text"
                                 inputMode="numeric"
@@ -207,20 +206,20 @@ function Basket() {
                                 name='Nomer telefona'
                                 value={phoneA}
                                 onChange={(e) => {
-                                        setPhoneA(e.target.value)
-									if(!reg.test(e.target.value)){
-										setSpanError('заполните номер телефона правильно')
-									}else{
-										setSpanError('')
-									}
+                                    setPhoneA(e.target.value)
+                                    if (!reg.test(e.target.value)) {
+                                        setSpanError('заполните номер телефона правильно')
+                                    } else {
+                                        setSpanError('')
+                                    }
                                 }}
                                 required
                             />
-							</InputGroup>
-						<span style={{color: 'red'}}>{spanError}</span><br />
-						 <Form.Label>Город</Form.Label>
+                        </InputGroup>
+                        <span style={{ color: 'red' }}>{spanError}</span><br />
+                        <Form.Label>Город</Form.Label>
                         <InputGroup controlId="formBasicAddress">
-                           
+
                             <input
                                 type="text"
                                 list="cities"
@@ -254,9 +253,9 @@ function Basket() {
                                 <option value="Климовск" />
                             </datalist>
                         </InputGroup>
- <Form.Label>Улица</Form.Label>
+                        <Form.Label>Улица</Form.Label>
                         <InputGroup controlId="formBasicAddress">
-                           
+
                             <Form.Control
                                 type="text"
                                 placeholder="Название Улицы"
@@ -266,9 +265,9 @@ function Basket() {
                                 required
                             />
                         </InputGroup>
-						  <Form.Label>Дом</Form.Label>
+                        <Form.Label>Дом</Form.Label>
                         <InputGroup controlId="formBasicAddress">
-                          
+
                             <Form.Control
                                 type="text"
                                 inputMode="numeric"
@@ -278,10 +277,10 @@ function Basket() {
                                 required
                             />
                         </InputGroup>
-						<Form.Label>Примечание к заказу</Form.Label>
+                        <Form.Label>Примечание к заказу</Form.Label>
                         <InputGroup>
                             <br />
-                            
+
                             <Form.Control
                                 as="textarea"
                                 name='Dopolnitelno'
@@ -322,11 +321,11 @@ function Basket() {
                         </div><br />
                         <div>
                             <input type='radio' id='mo' name="delivery" value={850} onChange={handleRadioChange} />{" "}<label htmlFor="mo">Московская область</label><span> - <b>от 850 Руб</b></span>
-                        </div>  
+                        </div>
                     </div><hr />
-                    <h1 style={{color : "green"}}>Стоимость товара: {isNaN(totalPrice) ? '-' : totalPrice.toString()} рублей</h1>
-                    <h1 style={{color : "green"}}>Стоимость доставки: {isNaN(selectedValue) ? '-' : selectedValue.toString()} рублей</h1>
-                    <h1 style={{color : "green"}}>Итого к оплате: {isNaN(totalPriceDel) ? '-' : totalPriceDel.toString()} рублей</h1>
+                    <h1 style={{ color: "green" }}>Стоимость товара: {isNaN(totalPrice) ? '-' : totalPrice.toString()} рублей</h1>
+                    <h1 style={{ color: "green" }}>Стоимость доставки: {isNaN(selectedValue) ? '-' : selectedValue.toString()} рублей</h1>
+                    <h1 style={{ color: "green" }}>Итого к оплате: {isNaN(totalPriceDel) ? '-' : totalPriceDel.toString()} рублей</h1>
                 </div>
 
             </div>

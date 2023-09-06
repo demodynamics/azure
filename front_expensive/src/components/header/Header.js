@@ -29,18 +29,6 @@ function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.pageYOffset;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -76,7 +64,7 @@ function Header() {
 
           <Nav>
 
-            <div className='header_number'><a className='tel_number' href="tel:+74950155560">Круглосуточно: +7(495)01-555-60</a><Link onClick={() => window.open("https://t.me/alcodostavkamolnia_bot", '_blank')}><Icon.Telegram className="telegram_icon_header" /></Link> <p style={{color : "white"}}>входящие звонки бесплатно</p></div>
+            <div className='header_number'><a className='tel_number' href="tel:+74950155560">Круглосуточно: +7(495)01-555-60</a><Link onClick={() => window.open("https://t.me/alcodostavkamolnia_bot", '_blank')}><Icon.Telegram className="telegram_icon_header" /></Link> <p style={{ color: "white" }}>входящие звонки бесплатно</p></div>
           </Nav>
         </Navbar.Collapse>
       </Container>

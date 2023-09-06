@@ -9,8 +9,8 @@ function AdminCatalog() {
 
     const navigate = useNavigate();
     let { name } = useParams();
-    
-   
+
+
     const [category, setCategory] = useState([])
     const [show, setShow] = useState('none');
     const [activeId, setActiveId] = useState();
@@ -24,12 +24,23 @@ function AdminCatalog() {
     };
 
     useEffect(() => {
+
+        async function getCategory() {
+            try {
+                const category = await axios.get(`/api/list/get-category/${name}`)
+                setCategory(category.data)
+            } catch (e) {
+                toast.warning('что-то пошло не так попробуйте через 5 минут')
+
+            }
+        }
+
         getCategory()
         if (!localStorage.getItem('token')) {
             navigate('/')
         }
 
-    }, [])
+    }, [name, navigate])
 
     function handleChange(e) {
         setItemPrice(e)
@@ -39,15 +50,7 @@ function AdminCatalog() {
         setItemOldPrice(e)
     }
 
-    async function getCategory() {
-        try {
-            const category = await axios.get(`/api/list/get-category/${name}`)
-            setCategory(category.data)
-        } catch (e) {
-            toast.warning('что-то пошло не так попробуйте через 5 минут')
 
-        }
-    }
 
     async function editItem(id) {
         try {
@@ -78,7 +81,7 @@ function AdminCatalog() {
             toast.success('Товар удален!')
             await getCategory()
         } catch (e) {
-            
+
             toast.warning('что-то пошло не так попробуйте через 5 минут')
         }
     }
@@ -93,8 +96,8 @@ function AdminCatalog() {
         <div className="admin_catalog">
             <Button variant="primary" onClick={logOut}>ВЫХОД</Button>{' '}
             <Button variant="primary" onClick={() => navigate('/nimda/category')}>НАЗАД</Button>{' '}
-            <Button variant="primary" onClick={()=>{navigate(`/nimda/category/add/${name}`)}}>Добавить Товар</Button>
-            
+            <Button variant="primary" onClick={() => { navigate(`/nimda/category/add/${name}`) }}>Добавить Товар</Button>
+
             <div className="container_admin">
                 <table className="table">
                     <thead>

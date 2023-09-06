@@ -1,6 +1,6 @@
 import './admin.css';
 import axios from 'axios';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import React, { useState } from 'react';

@@ -11,7 +11,7 @@ function Catalog({ myRef }) {
     const [white, setWhite] = useState(false)
 
     useEffect(() => {
-        if(window.location.pathname == "/category") {
+        if (window.location.pathname === "/category") {
             setWhite(true)
         }
 
@@ -100,16 +100,15 @@ function Catalog({ myRef }) {
     ]
 
 
-    const ll = '||'
     return (
         <>
-            <div className="catalog" ref={myRef} style={white ? {backgroundColor : "white"} : {backgroundColor : "rgba(0, 0, 0, 0.6)"}}>
+            <div className="catalog" ref={myRef} style={white ? { backgroundColor: "white" } : { backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
                 {
                     catalog.map((item, i) => {
                         return (
                             <Col className='catalog-item' key={i} onClick={() => navigate(`/category/${item.en}`)}>
                                 <div className="cards">
-                                    <img src={`/image/${item.en}.jpg`}></img>
+                                    <img src={`/image/${item.en}.jpg`} alt=""></img>
                                     <div className="month" ></div>
                                     <button className="success"  >{item.ru} </button>
                                 </div>
