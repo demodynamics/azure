@@ -30,7 +30,7 @@ function AdminCatalog() {
             getCategory();
         }
 
-    }, [navigate])
+    }, [])
 
     function handleChange(e) {
         setItemPrice(e)
