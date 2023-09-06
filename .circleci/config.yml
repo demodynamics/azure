@@ -8,6 +8,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install rsync
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y rsync
+      - run:
           name: Copy all files and folders to /home/circleci/project/alco24
           command: rsync -avz $CIRCLE_WORKING_DIRECTORY/alco/ /home/circleci/project/alco24/
       - run:
