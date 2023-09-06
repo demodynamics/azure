@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './admin.css';
 import axios from 'axios';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
@@ -17,7 +16,7 @@ function AddProduct() {
     try {
       const formData = new FormData();
       formData.append('file', imgProduct);
-	  formData.append('img', imgProduct.name);
+      formData.append('img', imgProduct.name);
       formData.append('name', nameProduct);
       formData.append('price', priceProduct);
       formData.append('category', name);
@@ -47,7 +46,7 @@ function AddProduct() {
 
   return (
     <div className="add_product">
-	<Button variant="primary" onClick={() => navigate(`/nimda/category/${name}`)}>НАЗАД</Button>{' '}
+      <Button variant="primary" onClick={() => navigate(`/nimda/category/${name}`)}>НАЗАД</Button>{' '}
       <h2>Добавить продукт</h2>
       <Button variant="primary" onClick={logOut}>
         ВЫХОД

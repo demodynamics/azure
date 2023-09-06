@@ -1,9 +1,8 @@
 import Catalog from "./catalog/Catalog";
 import * as Icon from 'react-bootstrap-icons'
 import './Main.css'
-import { Button, Form, Modal,InputGroup } from "react-bootstrap";
+import { Button, Form, Modal, InputGroup } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { useState, useEffect } from "react";
 import axios from "axios";
 
 
@@ -12,7 +11,7 @@ function Main() {
     const [name, setName] = useState()
     const [phone, setPhone] = useState()
     const [show, setShow] = useState(false);
-	const [spanError, setSpanError] = useState('');
+    const [spanError, setSpanError] = useState('');
     const handleClose = () => {
         setShow(false)
         setName("")
@@ -20,7 +19,7 @@ function Main() {
     };
     const handleShow = () => setShow(true);
 
-     const reg = /^\d{10}$/
+    const reg = /^\d{10}$/
 
 
     async function sendTelegram() {
@@ -53,7 +52,7 @@ function Main() {
 
     return (
         <>
-            <Icon.Telegram className="telegram_icon" onClick={() => window.open("https://t.me/alcodostavkamolnia_bot", '_blank')}/>
+            <Icon.Telegram className="telegram_icon" onClick={() => window.open("https://t.me/alcodostavkamolnia_bot", '_blank')} />
             <div className='mainFoto'>
                 <div className="divText">
                     <p>ДОСТАВКА АЛКОГОЛЯ ПО МОСКВЕ
@@ -76,7 +75,7 @@ function Main() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-						<Form.Label>Имя</Form.Label>
+                        <Form.Label>Имя</Form.Label>
                         <InputGroup className="mb-3">
                             <Form.Control
                                 type="text"
@@ -86,9 +85,9 @@ function Main() {
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </InputGroup>
-							<Form.Label>Тел.</Form.Label>
-                        	<InputGroup >
-							<InputGroup.Text>+7</InputGroup.Text>
+                        <Form.Label>Тел.</Form.Label>
+                        <InputGroup >
+                            <InputGroup.Text>+7</InputGroup.Text>
                             <Form.Control
                                 type="text"
                                 inputMode="numeric"
@@ -98,17 +97,17 @@ function Main() {
                                 name='Nomer telefona'
                                 value={phone}
                                 onChange={(e) => {
-                                        setPhone(e.target.value)
-									if(!reg.test(e.target.value)){
-										setSpanError('заполните номер телефона правильно')
-									}else{
-										setSpanError('')
-									}
+                                    setPhone(e.target.value)
+                                    if (!reg.test(e.target.value)) {
+                                        setSpanError('заполните номер телефона правильно')
+                                    } else {
+                                        setSpanError('')
+                                    }
                                 }}
                                 required
                             />
-							</InputGroup>
-						<span style={{color: 'red'}}>{spanError}</span>
+                        </InputGroup>
+                        <span style={{ color: 'red' }}>{spanError}</span>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
