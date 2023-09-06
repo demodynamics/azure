@@ -8,23 +8,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Debug absolute working directory path
-          command: |
-            echo "Working directory in container is: eval $CIRCLE_WORKING_DIRECTORY"
-
-      - run:
           name: Install rsync
           command: |
             sudo apt-get update
             sudo apt-get install -y rsync
       - run:
-          name: Debug absolute home directory path
-          command: |
-            echo "Home directory is: $HOME"
-
-      - run:
           name: Copy all files and folders to /home/circleci/project/alco24
-          command: rsync -avz --dry-run $CIRCLE_WORKING_DIRECTORY/alco/ /home/circleci/project/alco24/
+          command: rsync -avz /home/circleci/project/alco/ /home/circleci/project/alco24
       - run:
           name: Install Dependencies
           command: |
