@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Debug absolute working directory path
           command: |
-            echo "Working directory in container is: $CIRCLE_WORKING_DIRECTORY"
+            echo "Working directory in container is: eval $CIRCLE_WORKING_DIRECTORY"
 
       - run:
           name: Install rsync
