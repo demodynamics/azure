@@ -14,7 +14,7 @@ jobs:
             sudo apt-get install -y rsync
       - run:
           name: Copy all files and folders to /home/circleci/project/alco24
-          command: rsync -avz /home/circleci/project/alco/ /home/circleci/project/alco24
+          command: rsync -avz ~/project/alco/ /home/circleci/project/alco24
       - run:
           name: Install Dependencies
           command: |
