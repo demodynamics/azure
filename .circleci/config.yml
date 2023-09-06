@@ -51,8 +51,8 @@ jobs:
             docker push demodynamics/back_expensive:1.0.0
 
   deploy_frontend:
-    executor:
-      name: kubernetes/default
+    docker:
+      - image: cimg/base:2023.08
     steps:
       - kubernetes/install-kubectl
       - attach_workspace:
@@ -65,8 +65,8 @@ jobs:
           command: kubectl apply -f /workspace/alco24/deployment.yaml # Укажите путь к файлу деплоя фронтенда
 
   deploy_backend:
-    executor:
-      name: kubernetes/default
+    docker:
+      - image: cimg/base:2023.08
     steps:
       - kubernetes/install-kubectl
       - attach_workspace:
