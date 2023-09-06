@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Check Docker Daemon Status
           command: |
-            sudo systemctl status docker
+            docker info   # Check Docker daemon status using 'docker info' command
 
       - attach_workspace:
           at: /home/circleci/project/alco24/front_expensive
