@@ -42,14 +42,12 @@ jobs:
           name: Check Docker Daemon Status
           command: |
             docker info   # Check Docker daemon status using 'docker info' command
-
       - attach_workspace:
           at: /home/circleci/project/alco24/front_expensive
       - run:
-          name: Debug The Directory
+          name: Start Docker Daemon
           command: |
-            echo "Contents of Workspace:"
-            ls -la /home/circleci/project
+            sudo systemctl start docker   # Start the Docker daemon
       - run:
           name: Push Frontend to Docker Hub
           command: |
