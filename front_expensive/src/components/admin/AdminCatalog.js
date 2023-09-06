@@ -29,7 +29,7 @@ function AdminCatalog() {
             navigate('/')
         }
 
-    }, [name, navigate])
+    }, [getCategory])
 
     function handleChange(e) {
         setItemPrice(e)
