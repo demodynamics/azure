@@ -39,9 +39,15 @@ jobs:
       - image: cimg/base:2023.08
     steps:
       - run:
-          name: Start Docker Daemon
+          name: Check Docker Daemon Status
           command: |
-            sudo systemctl start docker   # Use this command if you're on a Linux-based system
+            sudo service docker status > docker_status.log   # Redirect the status output to a log file
+
+      - run:
+          name: View Docker Daemon Status Log
+          command: |
+            cat docker_status.log   # View the contents of the log file
+
       - attach_workspace:
           at: /home/circleci/project/alco24/front_expensive
       - run:
