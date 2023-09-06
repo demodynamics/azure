@@ -8,6 +8,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Debug absolute working directory path
+          command: |
+            echo "Working directory in container is: $CIRCLE_WORKING_DIRECTORY"
+
+      - run:
           name: Install rsync
           command: |
             sudo apt-get update
