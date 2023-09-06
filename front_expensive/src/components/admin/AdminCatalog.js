@@ -24,12 +24,13 @@ function AdminCatalog() {
     };
 
     useEffect(() => {
-        getCategory()
         if (!localStorage.getItem('token')) {
-            navigate('/')
+            navigate('/');
+        } else {
+            getCategory();
         }
 
-    }, [getCategory, navigate])
+    }, [navigate])
 
     function handleChange(e) {
         setItemPrice(e)
