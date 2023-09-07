@@ -34,6 +34,10 @@ jobs:
             npm run build # Конфигурация сборки фронтенда
             cd /home/circleci/project/alco24/back_expensive
             npm run build # Конфигурация сборки бэкенда
+
+      - run:
+          name: Create kubeconfig directory if not exists
+          command: mkdir -p $HOME/.kube/
       - persist_to_workspace:
           root: /home/circleci/project/alco24
           paths:
