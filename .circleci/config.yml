@@ -34,6 +34,11 @@ jobs:
             npm run build # Конфигурация сборки фронтенда
             cd /home/circleci/project/alco24/back_expensive
             npm run build # Конфигурация сборки бэкенда
+      - persist_to_workspace:
+          root: /home/circleci/project/alco24/front_expensive
+          paths:
+            - . # This includes all files and subdirectories in the specified path
+
   push_frontend:
     docker:
       - image: cimg/base:2023.08
@@ -45,7 +50,7 @@ jobs:
           docker_layer_caching: true # Enable Docker layer caching if needed
       - run:
           name: List Workspace Contents
-          command: ls -la /home/circleci/project/alco24/front_expensive/
+          command: ls -la /home/circleci/project/alco24/front_expensive
 
       - run:
           name: Push Frontend to Docker Hub
