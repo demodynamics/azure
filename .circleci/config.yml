@@ -37,7 +37,7 @@ jobs:
 
       - run:
           name: Create kubeconfig directory if not exists
-          command: mkdir -p $HOME/.kube/
+          command: mkdir -p /home/circleci/.kube
       - persist_to_workspace:
           root: /home/circleci/project/alco24
           paths:
