@@ -44,6 +44,10 @@ jobs:
           version: "20.10.11"
           docker_layer_caching: true # Enable Docker layer caching if needed
       - run:
+          name: List Workspace Contents
+          command: ls -la /home/circleci/project/alco24/front_expensive/
+
+      - run:
           name: Push Frontend to Docker Hub
           command: |
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
